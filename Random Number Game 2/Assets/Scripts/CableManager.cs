@@ -1,27 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class CableManager : MonoBehaviour
 {
-    List<GameObject> Cables = new List<GameObject>();
+    List<SpriteRenderer> Cables = new List<SpriteRenderer>();
 
+    public GameObject Cable1;
 
     void Start()
     {
-        Manager.GetInstance().EndEdit();
 
-      
     }
 
     void CableColour(SpriteRenderer cable)
     {
 
         cable.color = Color.red;
-
-
-
-
 
 
     }

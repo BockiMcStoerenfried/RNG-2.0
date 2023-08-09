@@ -15,7 +15,21 @@ public class Manager : MonoBehaviour
     public TMP_Text timerBox;
     public TMP_InputField inputField;
 
-    public int number;
+    GameObject[] cable1Parts = new GameObject[3];
+
+
+
+
+
+
+    public GameObject calbe1Head;
+    public GameObject calbe1Middle;
+    public GameObject calbe1Bottom;
+
+    public int number1;
+    public int number2;
+    public int number3;
+
     public int playerInput;
     public float timeRemaining = 200;
     public bool gameStarted = false;
@@ -32,6 +46,16 @@ public class Manager : MonoBehaviour
         instance = this;
 
     }
+
+    private void Start()
+    {
+        cable1Parts[0] = calbe1Head;
+        cable1Parts[1] = calbe1Middle;
+        cable1Parts[2] = calbe1Bottom;
+
+    }
+
+
 
 
     // retuns the instance of this class when called
@@ -59,16 +83,46 @@ public class Manager : MonoBehaviour
 
         textBox.text = "Guess the Number\n\nIt's between 1 and 5!";
 
-        number = Random.Range(1, 5);
-        Debug.Log(number);
+        for(int i = 0; i < 3; i++)
+        {
+            CableColorer(cable1Parts[i]);
+        }
 
+
+
+    }
+
+
+    void CableColorer(GameObject cable)
+    {
+        int number = Random.Range(1, 30);
+
+
+        if (number > 0 & number <= 10)
+        {
+            cable.GetComponent<SpriteRenderer>().color = Color.cyan;
+
+
+        }
+        else if (number > 10 & number <= 20)
+        {
+
+            cable.GetComponent<SpriteRenderer>().color = Color.green;
+
+
+        }
+        else if (number > 20 & number <= 30)
+        {
+
+            cable.GetComponent<SpriteRenderer>().color = Color.magenta;
+        }
     }
 
 
     // Function for the Confirm Button
     public void ConfirmButtonPress()
     {
-        EndEdit();
+        // EndEdit();
     }
 
 
@@ -92,17 +146,16 @@ public class Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            EndEdit();
+            //EndEdit();
         }
 
-        Debug.Log(timeRemaining);
 
     }
 
     /* Parses the numbers out off the InputField
      * Checks if the Playernumber equals the Integer Variable and acts accordingly
      * Clears the InputField
-     */
+     *
     public void EndEdit()
     {
         int.TryParse(inputField.text, out playerInput) ;
@@ -130,7 +183,7 @@ public class Manager : MonoBehaviour
 
 
     }
-
+    */
 
     // Gives the Endresult of the Game
     // Resets the Buttons and InputField
